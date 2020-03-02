@@ -6,7 +6,15 @@ Created on Tue Feb 25 15:37:19 2020
 @author: angelozinna
 """
 import sys
-
+def librarySectionChecker(lis):
+    limit=2
+    counter=0
+    for i in lis:
+        if "lib" in i:
+            counter+=1
+    if counter >= limit:
+        return True
+    return False
 def search(filename):
 
     with open(filename,"rb") as f:
@@ -35,10 +43,14 @@ def search(filename):
                         goodstr.append("".join(pot_string))
                     readytoread=False
                     pot_string=[]
+        if (librarySectionChecker(goodstr)):
+            print ("library section founded, therefore there is no password inside(probably)!")
+            return 
         for st in goodstr:
             if st:
                 print (st)
 print("Script runned!")
+print ("possible passwords:")
 if (len(sys.argv)<2):
     sys.exit()
 for arg in sys.argv:
