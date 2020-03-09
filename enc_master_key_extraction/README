@@ -1,0 +1,10 @@
+This little script is able to find all possible AES keys of 128 and 256 bit from a memory dump thanksfully to the script made by them (https://citp.princeton.edu/our-work/memory/).
+What I added to this are:
+1)Since that modern FDE systems (2020) are using an AES 512 bit key by default, I combined the 256-bit keys two by two founded on a memory dump in order to create all the possible permutations of 512-bit keys.
+This is what finder.sh, that internal uses key_preparation.py, does!
+
+2)I made another script(try_keys_on_LUKS.sh) that tries all possible keys made by previous step on LUKS installed on system
+
+HOW TO USE IT:
+1) Run finder.sh with a memory dump, it will create a file named "possible_keys" with all the possible 512-bit keys of the volume.
+2) Run try_keys_on_LUKS.sh on a system where cryptsetup and LUKS are installed and specipy where the volume is mounted(/dev/sda2 by default), it will do brute-forcing of the possible_keys on the volume.
