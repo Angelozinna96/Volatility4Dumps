@@ -16,7 +16,7 @@ if [ ! -d  "$DIR" ]; then
 	cd ..
 fi
 
-cd aeskeyfind/
-./aeskeyfind "../"$MEMORY_DUMP > ../key_files
-cd ..
+cp $DIR"/aeskeyfind" aes_key_find
+./aeskeyfind $MEMORY_DUMP > ./key_files
+
 python3 ./keys_preparation.py key_files
