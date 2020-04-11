@@ -1,7 +1,7 @@
 #!/bin/sh
 PROF_NAME=$1
 DUMP_LOC=$2
-VOL_LOC="/root/volatility"
+VOL_LOC=$3
 PATH_SAVE="./"
 echo "seaching gnome-keyring-d pid..."
 RES=($(python $VOL_LOC/vol.py -f $DUMP_LOC --profile=$PROF_NAME linux_pslist |grep gnome-keyring-d))
