@@ -2,7 +2,7 @@
 PART=$1
 KEYS_FILE="possible_keys"
 
-if ["$1" = ""] || [$# -gt 1]; then
+if [ "$1" = "" ] || [ $# -gt 1 ]; then
         PART="/dev/sdb2"
 fi
 
