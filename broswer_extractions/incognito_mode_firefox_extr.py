@@ -45,12 +45,13 @@ def writer(packets):
 			fp.write("\nEND-PACKET\n")
 		fp.close()
 def cookie_extr(mem_file):
-	#os.system('strings '+mem_file+'| grep "^Set-Cookie:" -B 30 -A 10 > output.txt')
+	os.system('strings '+mem_file+'| grep "^Set-Cookie:" -B 30 -A 10 > output.txt')
 	with open("output.txt","a") as fp:
 		fp.write("--\n")
 		fp.close()
 	good_p=reader()
 	writer(good_p)
+	os.system("rm -f output.txt")
 	
 
 
